@@ -3,8 +3,32 @@ This repository contains data, code and figures for our paper:
 > Jianxuan Hong, and Shengqian Chen. Network Analysis of Jade Artifacts in Liangzhu: Exploring the Relationships Between Liangzhu Ancient City, Fuquanshan, and Sidun
 
 # Environment Setup
+To reproduce all analyses and figures, please follow the steps below.
+
 ```bash
-pip3 install -r requirements.txt
+# Create a Python virtual environment (Python 3.10)
+python3.10 -m venv myenv     # specify Python version, currently no information about this
+
+# Activate the virtual environment
+source myenv/bin/activate    # for Linux/OSX
+# .\myenv\Scripts\activate   # for Windows PowerShell
+
+# Install required packages
+pip install -r requirements.txt   # install software needed for the analysis
+
+# Run the code that analyses the data
+# (Do NOT run from the top-level directory — it will cause a path error.)
+# Instead, run the code from within the "code" folder as follows:
+
+cd code
+python 1_all_smc.py
+python 2_all_network.py        # produces Fig. 3
+python 3_all_measurement.py
+python 4_special_smd.py
+python 5_special_network.py    # produces Fig. 4
+python 6_top5.py
+python 7_cong_smc.py
+python 8_cong_network.py       # produces Fig. 5
 ```
 
 # File Structure  
@@ -36,4 +60,17 @@ pip3 install -r requirements.txt
   * 📄 `special_network.png` was generated based on `special_smd.xlsx` and `special_coordinate_and_total.xlsx`, and is presented as Fig.4 in the manuscript.
   * 📄 `cong_network.png` was generated based on `cong_smc.xlsx`, and is presented as Fig.5 in the manuscript.
  
+### Relationship between codes and manuscript figures/tables
+
+| Script file | Output | Corresponding figure/table in paper |
+|--------------|---------|--------------------------------------|
+| `1_all_smc.py` | `all_smc.xlsx` | Used for computing network metrics (input for Fig. 3 and Table 1) |
+| `2_all_network.py` | `all_network.png` | **Fig. 3** – Shared Jade Traditions Network |
+| `3_all_measurement.py` | `all_measurement.xlsx` | **Table 1** – Network indicators for shared jade traditions |
+| `4_special_smd.py` | `special_smd.xlsx` | Used for computing network metrics (input for Fig. 4 and Table 2)|
+| `5_special_network.py` | `special_network.png` | **Fig. 4** – Power and Status Network |
+| `6_top5.py` | `weighted_degrees.xlsx` | **Table 2** – Top five sites per phase |
+| `7_cong_smc.py` | `cong_smc.xlsx` | Input for Fig. 5 and Table 3 |
+| `8_cong_network.py` | `cong_network.png` | **Fig. 5** – Jade Cong Network |
+
 
